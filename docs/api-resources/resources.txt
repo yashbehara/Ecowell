@@ -1,0 +1,11 @@
+1. Product Information and Nutrition:
+    - [Open Food Facts](https://world.openfoodfacts.org/): A database of food products from around the world, including nutritional information.
+
+2. User Authentication:
+    - [Auth0](https://auth0.com/): A widely used identity and authentication platform.
+
+3. Dietary Preference:
+    - [Edamam Recipe Search API](https://developer.edamam.com/edamam-recipe-api): Provides detailed nutritional information for a given recipe, including whether it's vegetarian or not.
+
+4. Product Recommendation:
+    - [Open Food Facts - Product Recommendation API](https://world.openfoodfacts.org/): A database of food products from around the world, including nutritional information.

@@ -1,0 +1,29 @@
+.card {
+  border: 2px solid black;
+  padding: 10px;
+  margin-left: 10px;
+  border-radius: 1.5rem !important;
+  height: calc(100% - 10vh);
+  max-width: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  transition: transform 0.3s ease-in-out !important;
+  transform: scale(0.8) !important;
+  cursor: pointer;
+  background-color: #dcd4ab !important;
+  min-width: 250px;
+  min-height: 200px;
+}
+
+.card:hover {
+  transform: scale(1) !important;
+  box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.7);
+  /* Adjust color and size as needed */
+
+}
+
+.card-media {
+  margin-top: 50px !important;
+}

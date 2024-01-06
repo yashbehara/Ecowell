@@ -1,0 +1,62 @@
+openapi: 3.0.0
+info:
+  title: Feedback API for EcoWell 
+  version: 1.0.0
+paths:
+  /feedback:
+    post:
+      description: Creates  user Feedback for EcoWell application
+      operationId: createFeedback
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Feedback'
+      responses:
+        '200':
+          description: Feedback created successfully.
+        '400':
+          description: Bad request. Check the request payload.
+        '500':
+          description: Internal server error.
+
+    get:
+      description: Get All existing Feedback
+      operationId: fetch-All-Feedback
+      responses:
+        '200':
+          description: List of feedback retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: '#/components/schemas/Feedback'
+        '500':
+          description: Internal server error.
+          
+
+components:
+  schemas:
+    Feedback:
+      type: object
+      properties:
+        rating:
+          type: number
+          description: The rating given in the feedback.
+        description:
+          type: string
+          description: The description or comments in the feedback.
+        dateTime:
+          type: string
+          format: date-time
+          description: The date and time of the feedback.
+        profileName:
+          type: string
+          description: The name of the person providing the feedback.
+      required:
+        - rating
+        - description
+        - dateTime
+        - profileName

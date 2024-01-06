@@ -1,0 +1,114 @@
+/* Recipes.css */
+
+.page-title {
+  color: #581845;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.recipes-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 100px;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+.recipe-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
+}
+
+.recipe-card:hover {
+  transform: scale(1.05);
+}
+
+.recipe-card-header {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.recipe-footer {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #f8f8f8; /* Set a background color if needed */
+  padding: 10px; /* Add padding for spacing */
+  transition: opacity 0.3s ease-in-out; /* Smooth opacity transition */
+  opacity: 0;
+}
+
+.recipe-card:hover .recipe-footer {
+  opacity: 1; /* Show the footer on hover */
+}
+
+
+.favorite-icon {
+  color: #007bff;
+  transition: color 0.3s ease-in-out;
+}
+
+.favorite-icon.selected {
+  color: #dc3545;
+}
+
+.recipe-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px 8px 0 0;
+}
+
+.recipe-details {
+  padding: 16px;
+}
+
+.recipe-details h2 {
+  color: #581845;
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.recipe-health-labels {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.health-label {
+  background-color: #28a745;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 4px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+}
+
+.recipe-serving {
+  margin-bottom: 8px;
+}
+
+.nutrient-value {
+  margin-right: 4px;
+}
+
+.nutrient-name {
+  font-weight: bold;
+}
+
+.recipe-nutrients {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.nutrient-info {
+  text-align: center;
+}
+
+.recipe-calories {
+  text-align: center;
+  color: #581845;
+}

@@ -1,0 +1,19 @@
+{
+  "name": "ecowell",
+  "version": "1.0.0",
+  "description": "Ecowell project",
+  "scripts": {
+    "start-server": "cd ./RESTAPIServices && nodemon server.js",
+    "start-client": "cd ./client && npm run start",
+    "app": "start npm run start-server && start npm run start-client"
+  },
+  "author": "pace makers",
+  "license": "ISC",
+  "dependencies": {
+    "html2canvas": "^1.4.1",
+    "i18next": "^23.7.8",
+    "i18next-http-backend": "^2.4.2",
+    "jspdf": "^2.5.1",
+    "react-i18next": "^13.5.0"
+  }
+}

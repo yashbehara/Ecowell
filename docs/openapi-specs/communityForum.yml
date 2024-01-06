@@ -1,0 +1,260 @@
+openapi: 3.1.0
+info:
+  title: Community Forum API
+  description: API for managing posts in a community forum
+  version: 'v1.0'
+servers:
+  - url: http://localhost:8080
+paths:
+  /posts:
+    get:
+      summary: Get all posts
+      responses:
+        "200":
+          description: A list of all posts
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Post'
+              examples:
+                allPostsExample:
+                  value: 
+                    - postId: 13456
+                      authorName: "Nikitha"
+                      email: "nikithak0612@gmail.com"
+                      title: "Low Potassium Diets"
+                      description: "Avoid desserts with chocolate, cream cheese, ice cream, or nuts – they are high in potassium and phosphorus. Choose lower-potassium vegetables such as snow peas, string beans, water chestnuts, bean sprouts, and bok choy."
+                      image: null
+                      createdDate: '2023-01-01T12:00:00Z'
+                      lastUpdatedDate: '2023-03-01T23:00:00Z'
+    post:
+      summary: Create a new post
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewPost'
+            examples:
+              newPostExample:
+                value:
+                  authorName: "Nikitha Kambhampati"
+                  email: "nikithak0612@gmail.com"
+                  title: "Low Sugar-intake Foods"
+                  description: "This post is about the list of foods which have low sugar intake."
+                  image: null
+      responses:
+        '201':
+          description: Post created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Post'
+              examples:
+                createdPostExample:
+                  value:
+                    postId: 245676
+                    authorName: "Nikitha Kambhampati"
+                    email: "nikithak0612@gmail.com"
+                    title: "Low Sugar-intake Foods"
+                    description: "This post is about the list of foods which have low sugar intake."
+                    image: null
+                    createdDate: '2023-01-02T12:00:00Z'
+                    lastUpdatedDate: '2023-01-02T12:00:00Z'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/PostNotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  '/posts/{postId}':
+    parameters:
+      - name: postId
+        in: path
+        required: true
+        description: The ID of the post
+        schema:
+          type: integer
+    get:
+      summary: Get a specific post by ID
+      responses:
+        '200':
+          description: The requested post
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Post'
+              examples:
+                specificPostExample:
+                  value:
+                    postId: 13456
+                    authorName: "Nikitha"
+                    email: "nikithak0612@gmail.com"
+                    title: "Low Potassium Diets"
+                    description: "Avoid desserts with chocolate, cream cheese, ice cream or nuts – they are high in potassium and phosphorus. Choose lower-potassium vegetables such as snow peas, string beans, water chestnuts, bean sprouts and bok choy"
+                    image: null
+                    createdDate: '2023-01-01T12:00:00Z'
+                    lastUpdatedDate: '2023-03-01T23:00:00Z'
+        '404':
+          $ref: '#/components/responses/PostNotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    put:
+      summary: Update a post by ID
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdatePost'
+            examples:
+              updatePostExample:
+                value:
+                  title: "Low Potassium Diet and Serving"
+                  description: "Well, the servings may vary but ideal is 2-3 cups of fruits plus veggies"
+                  image: null
+      responses:
+        '200':
+          description: Post updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Post'
+              examples:
+                updatedPostExample:
+                  value:
+                    postId: 13456
+                    authorName: "Nikitha"
+                    email: "nikithak0612@gmail.com"
+                    title: "Low Potassium Diet and Serving"
+                    description: "Avoid desserts with chocolate, cream cheese, ice cream or nuts – they are high in potassium and phosphorus. Choose lower-potassium vegetables such as snow peas, string beans, water chestnuts, bean sprouts and bok choy"
+                    image: null
+                    createdDate: '2023-01-01T12:00:00Z'
+                    lastUpdatedDate: '2023-01-02T12:00:00Z'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/PostNotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    delete:
+      summary: Delete a post by ID
+      responses:
+        '204':
+          description: Post deleted successfully
+          content:
+            application/json:
+              examples:
+                deletePostExample:
+                  value:
+                    message: "Post deleted successfully"
+        '404':
+          $ref: '#/components/responses/PostNotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+components:
+  schemas:
+    NewPost:
+      type: object
+      required:
+        - authorName
+        - title
+        - description
+        - email
+      properties:
+        authorName:
+          type: string
+          examples: ["Nikitha"]
+        title:
+          type: string
+          examples: ["Low Potassium Diet"]
+        description:
+          type: string
+          examples : ["Be cautious – Mexican food may be high in potassium."]
+        image:
+          type: string
+          format: base64
+        email:
+          type: string
+          format: email
+          examples: ['nikithak0612@gmail.com']
+    UpdatePost:
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        image:
+          type: string
+          format: base64
+    Post:
+      type: object
+      properties:
+        postId:
+          type: integer
+        authorName:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        createdDate:
+          type: string
+          format: date-time
+        lastUpdatedDate:
+          type: string
+          format: date-time
+        image:
+          type: string
+          format: base64
+
+  responses:
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+    Unauthorized:
+      description: Unauthorized request
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+            examples: [Unauthorized Request]
+
+    PostNotFound:
+      description: Post not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+            examples: [Post not found]
+    InternalServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+            examples: [Internal Sever Error]

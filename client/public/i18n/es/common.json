@@ -1,0 +1,44 @@
+{
+    "title1": "Análisis de Producto",
+    "step1": "1. Inicia sesión en Ecowell utilizando tus credenciales de Google.",
+    "step2": "2. Ingresa el ID del producto que se encuentra en el código de barras de tu producto.",
+    "step3": "3. Haz clic en Enviar.",
+    "step4": "4. Serás redirigido a la página de detalles del producto con información completa.",
+    "step5": "5. Verifica los niveles de nutrientes, ingredientes, valor nutricional y recomendaciones para productos similares.",
+  
+    "title2": "Recomendación de Producto",
+    "step21": "1. Inicia sesión en Ecowell utilizando tus credenciales de Google.",
+    "step22": "2. Ingresa el ID del producto que se encuentra en el código de barras de tu producto.",
+    "step23": "3. Haz clic en Enviar.",
+    "step24": "4. Serás redirigido a la página de detalles del producto con información completa.",
+    "step25": "5. Desplázate hacia abajo y haz clic en el botón de Recomendación de Producto.",
+  
+    "title3": "Añade tus Recetas Favoritas",
+    "step31": "1. Inicia sesión en Ecowell utilizando tus credenciales de Google.",
+    "step32": "2. Ingresa el ID del producto que se encuentra en el código de barras de tu producto. Haz clic en enviar",
+    "step33": "3. Desplázate hacia abajo para obtener recomendaciones",
+    "step34": "4. Haz clic en Generar Recetas.",
+    "step35": "5. Marca con un corazón la receta y ¡tenla en tu página de inicio! :)",
+  
+    "title4": "Exporta tus Recetas Favoritas",
+    "step41": "1. Inicia sesión en Ecowell utilizando tus credenciales de Google.",
+    "step42": "2. Serás redirigido a la página de inicio",
+    "step43": "3. Desplázate hacia abajo hasta la sección de exportación",
+    "step44": "4. Haz clic en el botón descargar como pdf.",
+    "step45": "5. Esto guardará tus recetas favoritas en formato pdf.",
+  
+    "title5": "Foro de la Comunidad",
+    "step51": "1. Inicia sesión en Ecowell utilizando tus credenciales de Google.",
+    "step52": "2. Serás redirigido a la página de inicio, desplázate hacia abajo hasta la sección de exportación",
+    "step53": "3. Haz clic en el botón Únete a la comunidad",
+    "step54": "4. Serás redirigido a la página de la comunidad, haz clic en el botón de crear publicación",
+    "step55": "5. ¡Escribe tus pensamientos, sugerencias, recetas favoritas y construye redes sociales!",
+  
+    "title6": "Configuración del Perfil de Usuario",
+    "step61": "1. Inicia sesión en Ecowell utilizando tus credenciales de Google.",
+    "step62": "2. Haz clic en el icono del perfil de usuario en la esquina superior derecha de la página.",
+    "step63": "3. Haz clic en la opción de actualizar perfil.",
+    "step64": "4. Actualiza tus detalles.",
+    "step65": "5. Haz clic en guardar para guardar tus cambios."
+  }
+  

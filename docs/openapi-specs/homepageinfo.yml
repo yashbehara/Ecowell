@@ -1,0 +1,70 @@
+openapi: 3.1.0
+info:
+  title: Home Page API for EcoWell
+  description: REST API to fetch the Home Page Info.
+  version: "v1.0"
+
+servers:
+  - url: http://localhost:8080
+
+paths:
+  /homePageData:
+    get:
+      operationId: Get home-page data
+      description: Fetches the home page data of the application containing live metrics, features, and footer data.
+      responses:
+        "200":
+          description: Successful. Fetched the home page data.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/HomePageDataItem"
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error400"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error500"
+
+components:
+  schemas:
+    HomePageDataItem:
+      type: object
+      properties:
+        Total_Users:
+          type: integer
+          example: 14
+        Community_Posts:
+          type: integer
+          example: 27
+        Total_Recipes:
+          type: integer
+          example: 7
+
+    Error400:
+      type: object
+      properties:
+        code:
+          type: string
+          example: "Bad Request"
+        message:
+          type: string
+          example: "The request received from the client is incorrect."
+
+    Error500:
+      type: object
+      properties:
+        code:
+          type: string
+          example: "Internal Server Error"
+        message:
+          type: string
+          example: "Server responded with a bad response."

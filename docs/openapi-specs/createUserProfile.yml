@@ -1,0 +1,285 @@
+openapi: 3.1.0
+info:
+  title: Create User Profile API
+  description: API for creating, retrieving, and updating user profiles on Ecowell
+  version: 'v1.0'
+servers: 
+  - url: http://localhost:3000
+paths:
+  /user-details/:
+    post:
+      description: This endpoint is for creating a user's profile on the Ecowell platform
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserDetailsRequest'
+      responses:
+        "200":
+          description: Profile created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserProfileResponse'
+        "400":
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestError'
+        "409":
+          description: "Resource already exists"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceAlreadyExistsError'
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+    get:
+      description: Retrieve a user's profile
+      parameters:
+        - in: query
+          name: first_name
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: last_name
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: email
+          required: true
+          schema:
+            type: string
+            format: email
+      responses:
+        "200":
+          description: Profile retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserProfileResponse'
+        "400":
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestError'
+        "404":
+          description: "Resource not found"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFoundError'
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+    put:
+      description: Update a user's profile
+      parameters:
+        - in: query
+          name: first_name
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: last_name
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: email
+          required: true
+          schema:
+            type: string
+            format: email
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserDetailsRequest'
+      responses:
+        "200":
+          description: Profile updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserProfileResponse'
+        "400":
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestError'
+        "404":
+          description: "Resource not found"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFoundError'
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+
+components:
+  schemas:
+    UserDetailsRequest:
+      type: object
+      properties:
+        Personal_Details:
+          type: object
+          properties:
+            First_Name:
+              type: string
+            Last_Name:
+              type: string
+            Email_Address:
+              type: string
+              format: email
+            Age:
+              type: integer
+              format: int32
+              minimum: 0
+        Physical_Details:
+          type: object
+          properties:
+            Height:
+              type: string
+            Weight:
+              type: string
+            BP_Level:
+              type: object
+              properties:
+                Upper_Limit:
+                  type: number
+                Lower_Limit:
+                  type: number
+            Sugar_Level:
+              type: object
+              properties:
+                Upper_Limit:
+                  type: number
+                Lower_Limit:
+                  type: number
+            Fat_Mass:
+              type: string
+            Water_Mass:
+              type: string
+            Skeletal_Mass:
+              type: string
+            Intended_Sugar_Limit:
+              type: string
+            Intended_Fat_Limit:
+              type: string
+            Intended_Protein_Limit:
+              type: string
+    UserProfileResponse:
+      type: object
+      properties:
+        profile:
+          type: object
+          properties:
+            Personal_Details:
+              type: object
+              properties:
+                First_Name:
+                  type: string
+                Last_Name:
+                  type: string
+                Email_Address:
+                  type: string
+                  format: email
+                Age:
+                  type: integer
+                  format: int32
+                  minimum: 0
+            Physical_Details:
+              type: object
+              properties:
+                Height:
+                  type: string
+                Weight:
+                  type: string
+                BP_Level:
+                  type: object
+                  properties:
+                    Upper_Limit:
+                      type: number
+                    Lower_Limit:
+                      type: number
+                Sugar_Level:
+                  type: object
+                  properties:
+                    Upper_Limit:
+                      type: number
+                    Lower_Limit:
+                      type: number
+                Fat_Mass:
+                  type: string
+                Water_Mass:
+                  type: string
+                Skeletal_Mass:
+                  type: string
+                Intended_Sugar_Limit:
+                  type: string
+                Intended_Fat_Limit:
+                  type: string
+                Intended_Protein_Limit:
+                  type: string
+        profile_id:
+          type: string
+          format: uuid
+    BadRequestError:
+      type: object
+      properties:
+        message:
+          type: string
+          examples: [The server will not process the request due to invalid request from the client]
+        error_code:
+          type: integer
+          format: int32
+          example: 400
+    ResourceAlreadyExistsError:
+      type: object
+      properties:
+        message:
+          type: string
+          examples: [The server will not process the request as the resource already exists]
+        error_code:
+          type: integer
+          format: int32
+          example: 409
+    ResourceNotFoundError:
+      type: object
+      properties:
+        message:
+          type: string
+          examples: [The requested resource is not found while processing your request]
+        error_code:
+          type: integer
+          format: int32
+          example: 404
+    InternalServerError:
+      type: object
+      properties:
+        message:
+          type: string
+          examples: [Error occurred while processing your request]
+        error_code:
+          type: integer
+          format: int32
+          example: 500

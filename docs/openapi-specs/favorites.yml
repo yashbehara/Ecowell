@@ -1,0 +1,157 @@
+openapi: "3.1.0"
+info: 
+  title: Favorite Recipes API
+  description: This API allows users to manage their favorite recipes.
+  version: 'v1.0'
+servers:
+  - url: http://localhost:8080
+paths:
+  /favorites:
+    get:
+      summary: Get all favorite recipes
+      responses:
+        "200": 
+          description: Successful Retrieval
+          content: 
+            application/json: 
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Favorite"
+        "403":
+          description: Unauthorized Request
+          content: 
+            application/json: 
+              schema:
+                $ref: "#/components/schemas/UnauthorizedError"
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServerError'
+    post:
+      summary: Add a new favorite recipe
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Favorite'
+      responses:
+        '201':
+          description: Successful creation
+        '400':
+          description: Invalid input
+        "403":
+          description: Unauthorized Request
+          content: 
+            application/json: 
+              schema:
+                $ref: "#/components/schemas/UnauthorizedError"
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServerError'
+  /favorites/{userId}:
+    get:
+      summary: Get favorite recipes by userId
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Favorite recipes for the specified user
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Favorite'
+        "403":
+          description: Unauthorized Request
+          content: 
+            application/json: 
+              schema:
+                $ref: "#/components/schemas/UnauthorizedError"
+        '404':
+          description: User not found
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServerError'
+    delete:
+      summary: Delete favorite recipes by userId
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Favorite recipes successfully deleted
+        "403":
+          description: Unauthorized Request
+          content: 
+            application/json: 
+              schema:
+                $ref: "#/components/schemas/UnauthorizedError"
+        '404':
+          description: User not found
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServerError'
+
+components: 
+  schemas:
+    Favorite:
+      type: object
+      required:
+        - userId
+        - recipeUris
+      properties:
+        userId:
+          type: string
+          description: Unique identifier of the user
+        recipeUris:
+          type: array
+          items:
+            type: string
+          description: Array of URIs of recipes
+    UnauthorizedError:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code
+          examples: 
+            - AuthorizationError
+        message:
+          type: string
+          description: Error message
+          examples: 
+            - User is not authorized
+    ServerError:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code
+          examples: 
+            - ServerError
+        message:
+          type: string
+          description: Error message
+          examples: 
+            - Internal Server Error

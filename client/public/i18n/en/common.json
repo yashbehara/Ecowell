@@ -1,0 +1,43 @@
+{
+  "title1": "Product Analysis",
+  "step1": "1. Log in to Ecowell using your Google credentials.",
+  "step2": "2. Enter the product ID found on your product's barcode.",
+  "step3": "3. Click Submit.",
+  "step4": "4. You will be redirected to the product details page with comprehensive information.",
+  "step5": "5. Check nutrient levels, ingredients, nutritional value, and recommendations for similar products.",
+
+  "title2": "Product Recommendation",
+  "step21": "1. Log in to Ecowell using your Google credentials.",
+  "step22": "2. Enter the product ID found on your product's barcode.",
+  "step23": "3. Click Submit.",
+  "step24": "4. You will be redirected to the product details page with comprehensive information.",
+  "step25": "5. Scroll down and click on the Product Recommendation button.",
+
+  "title3": "Add Your Favorite Recipes",
+  "step31": "1. Log in to Ecowell using your Google credentials.",
+  "step32": "2. Enter the product ID found on your product's barcode. Click on submit",
+  "step33": "3. Scroll down to get recommendations",
+  "step34": "4. Click Generate Recipes.",
+  "step35": "5. Mark heart to the recipe and get it on your home page :) ",
+
+  "title4": "Export Favorite Recipes",
+  "step41": "1. Log in to Ecowell using your Google credentials.",
+  "step42": "2. You will be redirected to home page",
+  "step43": "3. Scroll down to export sections",
+  "step44": "4. Click button download as pdf.",
+  "step45": "5. This will save your favorite recipes in the form of pdf.",
+
+  "title5": "Community Forum",
+  "step51": "1. Log in to Ecowell using your Google credentials.",
+  "step52": "2. You will be redirected to home page, Sroll down to export sections",
+  "step53": "3. Click on the button Join community",
+  "step54": "4. You will be redirected to the community page, click on create post button",
+  "step55": "5. Write down your thoughts, suggestions, favourite recipe and build networking!",
+
+  "title6": "User Profile Settings",
+  "step61": "1. Log in to Ecowell using your Google credentials.",
+  "step62": "2. Click on the top right user profile icon given on the top bar of the page.",
+  "step63": "3. Click on update profile menue item.",
+  "step64": "4. Update your details.",
+  "step65": "5. Click save to save your changes."
+}

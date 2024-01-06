@@ -1,0 +1,35 @@
+/* ProductDetailsContainer.css */
+
+.product-details-container {
+    margin-top: 80px;
+    margin-bottom: 50px;
+  }
+  
+
+  
+.product-paper:hover {
+    transform: scale(1.05); /* Increase the scale on hover */
+  }
+
+.margin-bottom-10{
+    margin-bottom: 10px;
+}  
+
+/* .product-container{
+    background-color: '#f0f0f0';
+    padding: '20px';
+    border-radius: 1.5em;
+} */
+
+
+.low-border {
+    border: 3px solid green !important;
+  }
+  
+  .moderate-border {
+    border:3px solid orange !important; 
+  }
+  
+  .high-border {
+    border: 3px solid red !important; 
+  }
